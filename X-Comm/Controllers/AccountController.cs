@@ -84,7 +84,7 @@ namespace X_Comm.Controllers
                 User user = await UserManager.FindAsync(model.Email, model.Password);
                 if (user == null)
                 {
-                    ModelState.AddModelError("", "Неверный логин или пароль.");
+                    ModelState.AddModelError("", "Incorrect login or password.");
                 }
                 else
                 {
