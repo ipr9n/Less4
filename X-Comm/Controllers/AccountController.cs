@@ -15,8 +15,6 @@ namespace X_Comm.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Account
-
         private AppUserManager UserManager
         {
             get
