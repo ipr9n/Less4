@@ -1,0 +1,67 @@
+﻿@model List<X_Comm.Models.UserViewModel>
+
+@{
+    ViewBag.Title = "Main";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <input type="button"
+           class="btn btn-danger"
+           onclick="location.href = '@Url.Action("Logout", "Account")'"
+           value="Logout"
+           style="float: right;"/>
+
+    @using (Html.BeginForm("UserDeleteForm", "Home"))
+    {
+        <input type="submit"
+               class="btn btn-danger"
+               formaction="Home/BlockForm"
+               formmethod="post"
+               value="Block" />
+        <input type="submit"
+               class="btn btn-danger"
+               formaction="Home/UnBlockForm"
+               formmethod="post"
+               value="UnBlock" />
+        <input type="submit"
+               class="btn btn-danger"
+               formaction="Home/UserDeleteForm"
+               formmethod="post"
+               value="Delete" />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"><input type="checkbox" onclick="javascript:check(this.form.checks,checked)" name="master_box"></th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Register date</th>
+                    <th scope="col">Last online</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row"><input type="checkbox" name="checks" id="checks" value=@item.Id /></th>
+                        <td>@item.Id</td>
+                        <td>@item.Username</td>
+                        <td>@item.Email</td>
+                        <td>@item.RegisterDate</td>
+                        <td>@item.LastOnline</td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<script type="text/javascript">
+    function check(field, flag) {
+        if (flag == 1) { for (i = 0; i < field.length; i++) field[i].checked = true; }
+        else { for (i = 0; i < field.length; i++) field[i].checked = false; }
+    }
+</script>

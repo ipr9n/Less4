@@ -1,0 +1,54 @@
+﻿@model X_Comm.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Registration";
+}
+
+<h2>Registration</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <hr />
+        @Html.ValidationSummary(false)
+
+        <div>
+            Email
+            <div>
+                @Html.EditorFor(model => model.Email)
+            </div>
+        </div>
+
+        <div>
+           Name
+            <div>
+                @Html.EditorFor(model => model.Name)
+            </div>
+        </div>
+
+        <div>
+            Password
+            <div>
+                @Html.EditorFor(model=>model.Password)
+            </div>
+        </div>
+
+        <div>
+            Repeat password
+            <div>
+                @Html.EditorFor(model => model.PasswordConfirm)
+            </div>
+        </div>
+
+        <div>
+            <div>
+                @Html.ActionLink("Already have account? Login","Login","Account")
+                <br/>
+                <input type="submit" value="Зарегистрировать"/>
+            </div>
+        </div>
+    </div>
+}
